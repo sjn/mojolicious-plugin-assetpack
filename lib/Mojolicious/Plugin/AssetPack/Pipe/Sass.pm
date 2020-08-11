@@ -141,7 +141,7 @@ sub _include_path {
 
 sub _install_sass {
   my $self = shift;
-  $self->run([qw(ruby -rubygems -e), 'puts Gem.user_dir'], undef, \my $base);
+  $self->run([qw(ruby -r rubygems -e), 'puts Gem.user_dir'], undef, \my $base);
   chomp $base;
   my $path = Mojo::File->new($base, qw(bin sass));
   return $path if -e $path;
